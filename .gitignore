@@ -39,3 +39,4 @@ data/
 script/
 data/ingested_tweets.json
 data/ingested_tweets.json
+netlify/functions/prompt-data.json
