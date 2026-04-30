@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, "..");
 const DIST_DIR = path.join(ROOT_DIR, "dist");
 const PROMPT_DATA_PATH = path.join(ROOT_DIR, "netlify", "functions", "prompt-data.json");
+const ROOT_PROMPT_DATA_PATH = path.join(ROOT_DIR, "prompt-data.json");
 
 function copyDir(src, dest) {
   fs.cpSync(src, dest, {
@@ -36,6 +37,7 @@ fs.writeFileSync(
   ),
   "utf8",
 );
+fs.copyFileSync(PROMPT_DATA_PATH, ROOT_PROMPT_DATA_PATH);
 
 console.log(`Built Netlify static site at ${path.relative(ROOT_DIR, DIST_DIR)}`);
 console.log(`Built Netlify prompt data at ${path.relative(ROOT_DIR, PROMPT_DATA_PATH)}`);

@@ -1,11 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { getIndex, resolvePromptApi } from "../../lib/prompt-index.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const PROMPT_DATA_PATH = path.join(__dirname, "prompt-data.json");
+const PROMPT_DATA_CANDIDATES = [
+  path.join(process.cwd(), "netlify", "functions", "prompt-data.json"),
+  path.join(process.cwd(), "prompt-data.json"),
+];
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
@@ -21,8 +21,10 @@ function loadFunctionIndex() {
     return cachedFunctionIndex;
   }
 
-  if (fs.existsSync(PROMPT_DATA_PATH)) {
-    const data = JSON.parse(fs.readFileSync(PROMPT_DATA_PATH, "utf8"));
+  const promptDataPath = PROMPT_DATA_CANDIDATES.find((candidate) => fs.existsSync(candidate));
+
+  if (promptDataPath) {
+    const data = JSON.parse(fs.readFileSync(promptDataPath, "utf8"));
     cachedFunctionIndex = {
       rootDir: "netlify-bundled-data",
       types: data.types,
