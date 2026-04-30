@@ -1,0 +1,16 @@
+{
+  "friendLinksTitle": "友情链接",
+  "friendLinksDescription": "您的点击就是最大的支持",
+  "friendLinks": [
+    {
+      "title": "创意工坊",
+      "url": "http://www.ideaforsale.com",
+      "description": "在线使用GPT-IMAGE-2"
+    },
+    {
+      "title": "GitHub Repository",
+      "url": "https://github.com/ihtry/",
+      "description": "查看项目源码"
+    }
+  ]
+}

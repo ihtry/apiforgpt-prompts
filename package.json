@@ -1,0 +1,16 @@
+{
+  "name": "apiforgpt-prompts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local and Netlify API for random GPT prompts by category.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-netlify.js",
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js && node --check public/app.js && node --check netlify/functions/prompt-api.js && node --check scripts/build-netlify.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

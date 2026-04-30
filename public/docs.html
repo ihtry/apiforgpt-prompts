@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API 文档 - ApiForGPT-prompts</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">GPT</span>
+        <span>ApiForGPT-prompts</span>
+      </a>
+      <nav class="nav">
+        <a href="/">随机工具</a>
+        <a href="/docs" aria-current="page">API 文档</a>
+        <a href="/api/types" target="_blank" rel="noopener noreferrer">类型 JSON</a>
+      </nav>
+    </header>
+
+    <main class="docs-shell">
+      <section class="docs-card docs-hero">
+        <p class="eyebrow">API Reference</p>
+        <h1>随机提示词 API 文档</h1>
+        <p>服务基于本仓库 <span class="inline-code">cases/*.md</span> 启动时解析数据，不需要数据库。默认地址为 <span class="inline-code">http://127.0.0.1:3000</span>。</p>
+      </section>
+
+      <section class="docs-card">
+        <h2>接口列表</h2>
+        <div class="endpoint-grid">
+          <article class="endpoint">
+            <div class="endpoint-head">
+              <span class="method">GET</span>
+              <code>/health</code>
+            </div>
+            <h3>服务状态</h3>
+            <p>返回服务状态、提示词总数和各类型数量。</p>
+          </article>
+          <article class="endpoint">
+            <div class="endpoint-head">
+              <span class="method">GET</span>
+              <code>/api/types</code>
+            </div>
+            <h3>类型列表</h3>
+            <p>返回可用类型列表。当前基础类型包括 <span class="inline-code">ad-creative</span>、<span class="inline-code">character</span>、<span class="inline-code">comparison</span>、<span class="inline-code">ecommerce</span>、<span class="inline-code">portrait</span>、<span class="inline-code">poster</span>、<span class="inline-code">ui</span>。</p>
+          </article>
+          <article class="endpoint">
+            <div class="endpoint-head">
+              <span class="method">GET</span>
+              <code>/api/random?type=poster</code>
+            </div>
+            <h3>按查询参数随机</h3>
+            <p>按查询参数获取指定类型的一条随机提示词。也支持中文别名，例如 <span class="inline-code">type=海报</span>、<span class="inline-code">type=电商</span>、<span class="inline-code">type=人像</span>。</p>
+          </article>
+          <article class="endpoint">
+            <div class="endpoint-head">
+              <span class="method">GET</span>
+              <code>/api/random/poster</code>
+            </div>
+            <h3>按路径随机</h3>
+            <p>按路径参数获取指定类型的一条随机提示词，适合前端路由或更简洁的调用。</p>
+          </article>
+          <article class="endpoint">
+            <div class="endpoint-head">
+              <span class="method">GET</span>
+              <code>/images/&lt;path&gt;</code>
+            </div>
+            <h3>图片资源</h3>
+            <p>访问随机结果中的本地输出图片，例如 <span class="inline-code">/images/poster_case1/output.jpg</span>。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="docs-card">
+        <h2>响应示例</h2>
+        <pre class="code-block">{
+  "type": "poster",
+  "total": 101,
+  "item": {
+    "id": 130,
+    "title": "Dance Movement Reference Sheet",
+    "sourceUrl": "https://x.com/...",
+    "creator": {
+      "name": "@creator",
+      "url": "https://x.com/creator"
+    },
+    "prompt": "...",
+    "imagePath": "images/poster_case130/output.jpg",
+    "imageUrl": "/images/poster_case130/output.jpg"
+  }
+}</pre>
+      </section>
+
+      <section class="docs-card">
+        <h2>调用示例</h2>
+        <pre class="code-block">curl -sS http://127.0.0.1:3000/api/types
+curl -sS http://127.0.0.1:3000/api/random/poster
+curl -sS 'http://127.0.0.1:3000/api/random?type=海报'</pre>
+      </section>
+
+      <section class="docs-card">
+        <h2>错误格式</h2>
+        <p>类型缺失或无效时返回 HTTP 400，并给出可用类型列表。</p>
+        <pre class="code-block">{
+  "error": "Invalid or missing type",
+  "validTypes": [
+    { "type": "poster", "count": 101 }
+  ]
+}</pre>
+      </section>
+    </main>
+  </body>
+</html>

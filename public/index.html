@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ApiForGPT-prompts</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">GPT</span>
+        <span>ApiForGPT-prompts</span>
+      </a>
+      <nav class="nav">
+        <a href="/" aria-current="page">随机工具</a>
+        <a href="/docs">API 文档</a>
+        <a href="/api/types" target="_blank" rel="noopener noreferrer">类型 JSON</a>
+      </nav>
+    </header>
+
+    <main class="app-shell">
+      <section class="control-panel">
+        <div class="console-heading">
+          <p class="eyebrow">Prompt Library</p>
+          <h1>ApiForGPT-prompts 控制台</h1>
+          <div class="metric-row" aria-label="提示词统计">
+            <span class="metric"><strong id="totalCount">--</strong> 条提示词</span>
+            <span class="metric"><strong id="categoryCount">--</strong> 个类型</span>
+          </div>
+        </div>
+        <div class="quick-actions">
+          <label class="field">
+            <span>提示词类型</span>
+            <select id="typeSelect" aria-label="选择提示词类型"></select>
+          </label>
+          <button id="randomButton" class="primary-button" type="button">随机获取</button>
+        </div>
+      </section>
+
+      <section id="typeStats" class="stats-grid" aria-label="类型统计"></section>
+
+      <section class="content-grid">
+        <article class="image-card">
+          <div class="card-header">
+            <div>
+              <span>输出示例</span>
+              <span id="caseId" class="muted">Case --</span>
+            </div>
+            <a id="imageLink" class="panel-link" href="#" target="_blank" rel="noopener noreferrer" hidden>打开图片</a>
+          </div>
+          <div class="image-frame">
+            <img id="outputImage" alt="提示词输出示例" src="">
+            <div class="empty-state">暂无预览</div>
+          </div>
+        </article>
+
+        <article class="prompt-card">
+          <div class="result-meta">
+            <span id="typeBadge" class="badge">未选择</span>
+            <div class="link-row">
+              <a id="sourceLink" href="#" target="_blank" rel="noopener noreferrer">来源</a>
+              <a id="creatorLink" href="#" target="_blank" rel="noopener noreferrer">作者</a>
+            </div>
+          </div>
+          <h2 id="caseTitle">等待随机结果</h2>
+          <div class="detail-row" aria-label="当前提示词信息">
+            <span id="promptLength">-- chars</span>
+            <span id="promptMeta">--</span>
+          </div>
+          <div class="prompt-toolbar">
+            <span>Prompt</span>
+            <div class="prompt-actions">
+              <button id="copyApiButton" class="ghost-button" type="button" disabled>复制 API</button>
+              <button id="copyButton" class="ghost-button" type="button" disabled>复制 Prompt</button>
+            </div>
+          </div>
+          <pre id="promptBox">点击“随机获取”开始。</pre>
+        </article>
+      </section>
+
+      <section class="api-strip">
+        <div>
+          <h2>API 调用</h2>
+          <p>当前类型的随机接口</p>
+        </div>
+        <code id="apiExample">GET /api/random/poster</code>
+      </section>
+
+      <section id="friendLinksSection" class="friend-links" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Links</p>
+            <h2 id="friendLinksTitle">友情链接</h2>
+          </div>
+          <p id="friendLinksDescription">相关工具和资源</p>
+        </div>
+        <div id="friendLinksList" class="friend-link-grid" aria-label="友情链接"></div>
+      </section>
+    </main>
+
+    <footer class="statusbar" aria-live="polite">
+      <span id="statusText">正在读取类型...</span>
+      <span id="countText"></span>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
