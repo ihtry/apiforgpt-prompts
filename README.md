@@ -2,6 +2,8 @@
 
 ApiForGPT-prompts 是一个基于 `awesome-gpt-image-2-prompts` 二次开发的提示词 API 与 Web 控制台项目。它会从仓库内现有的 Markdown 案例文件中解析提示词，并提供按类型随机获取 prompt 的 API、图片预览、API 文档页和可配置友情链接。
 
+演示地址：http://api.prompts.tuimai.com
+
 ## 原项目与作者信息
 
 本项目基于原仓库二次开发：
@@ -160,11 +162,11 @@ Functions directory: netlify/functions
 部署后可访问：
 
 ```text
-/
-/docs
-/health
-/api/types
-/api/random/poster
+https://api.prompts.tuimai.com/
+https://api.prompts.tuimai.com/docs
+https://api.prompts.tuimai.com/health
+https://api.prompts.tuimai.com/api/types
+https://api.prompts.tuimai.com/api/random/poster
 ```
 
 当 GitHub 仓库更新并触发 Netlify 重新部署后，`cases/*.md` 和 `images/` 中的数据会随构建一起更新。
