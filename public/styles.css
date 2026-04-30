@@ -699,6 +699,10 @@ button:disabled {
 }
 
 @media (max-width: 740px) {
+  body {
+    background: var(--bg);
+  }
+
   .topbar,
   .nav,
   .quick-actions,
@@ -711,34 +715,103 @@ button:disabled {
 
   .topbar {
     position: static;
-    padding: 14px 16px;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .brand {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .brand span:last-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4px;
+    width: 100%;
   }
 
   .nav a {
-    width: 100%;
+    display: grid;
+    width: auto;
+    min-height: 38px;
+    place-items: center;
+    padding: 8px 6px;
+    font-size: 12px;
+    text-align: center;
   }
 
   .app-shell,
   .docs-shell {
-    width: calc(100vw - 20px);
-    padding-top: 10px;
+    width: calc(100vw - 16px);
+    padding: 8px 0 16px;
   }
 
   .control-panel,
   .image-card,
   .prompt-card,
-  .docs-card {
-    padding: 18px;
+  .docs-card,
+  .friend-links {
+    padding: 14px;
   }
 
-  .stats-grid,
+  .control-panel {
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.12;
+  }
+
+  h2 {
+    font-size: 19px;
+  }
+
+  .metric-row {
+    gap: 7px;
+    margin-top: 12px;
+  }
+
+  .metric {
+    flex: 1 1 130px;
+    justify-content: center;
+  }
+
+  .quick-actions {
+    gap: 9px;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .stat-card {
+    min-height: 64px;
+    padding: 10px;
+  }
+
+  .stat-card strong {
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+
   .friend-link-grid,
   .endpoint-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .result-meta,
@@ -749,22 +822,83 @@ button:disabled {
 
   .link-row,
   .prompt-actions {
+    width: 100%;
     justify-content: flex-start;
   }
 
+  .prompt-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ghost-button {
+    width: 100%;
+  }
+
+  .content-grid,
+  .api-strip,
+  .friend-links {
+    margin-top: 10px;
+  }
+
+  .image-card,
+  .prompt-card {
+    padding: 14px;
+  }
+
+  .card-header {
+    gap: 8px;
+  }
+
   .image-frame {
-    min-height: 320px;
+    min-height: 240px;
+    max-height: 420px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .detail-row {
+    gap: 6px;
+  }
+
+  .detail-row span {
+    min-height: 26px;
   }
 
   #promptBox {
-    min-height: 300px;
+    min-height: 260px;
+    max-height: 430px;
+    padding: 13px;
+    font-size: 13px;
+    line-height: 1.58;
+  }
+
+  .api-strip {
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .api-strip code {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .section-heading {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .friend-link-card {
+    min-height: 72px;
+    padding: 12px;
   }
 
   .statusbar {
     position: static;
-    width: calc(100vw - 20px);
-    margin-bottom: 12px;
+    width: calc(100vw - 16px);
+    min-height: auto;
+    margin: 0 auto 10px;
     padding: 12px 14px;
+    border-radius: 8px;
   }
 }
 
@@ -776,7 +910,7 @@ button:disabled {
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 26px;
   }
 
   .card-header {
@@ -784,8 +918,15 @@ button:disabled {
     flex-direction: column;
   }
 
-  .ghost-button,
-  .primary-button {
-    width: 100%;
+  .prompt-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .image-frame {
+    min-height: 220px;
+  }
+
+  #promptBox {
+    min-height: 240px;
   }
 }
